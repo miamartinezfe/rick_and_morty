@@ -45,7 +45,7 @@ export default function Form({email,password,setAccess}) {
             <input
             name="password"
             placeholder='Escribe tu contrasena...'
-            type="text"
+            type="password"
             value={userData.password}
             onChange = {handleChange}
             ></input>
