@@ -8,7 +8,7 @@ export default function Detail() {
     const { id } = useParams();
 
     useEffect(() => {    //si le pasamos el id a useEffect funciona como componentWillUnmount()
-        axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+        axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
             if (data.name) {
                 setCharacter(data);
             } else {
