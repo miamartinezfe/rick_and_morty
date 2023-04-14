@@ -13,15 +13,14 @@ function App() {
    const [characters, setCharacters] = useState([]);
    const [access, setAccess] = useState(false);
    const navigate = useNavigate();
-   const email = "miguel@prueba.com"
-   const password = "abc123"
-   console.log(access);
    useEffect(() => {
       !access && navigate('/');
    }, [access]);
 
    function onSearch(id) {
-      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
+      axios.get(`http://localhost:3001/rickandmorty/character/${id}`)
+      .then(({ data }) => {
+         console.log(data);
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
@@ -45,7 +44,7 @@ function App() {
             <Route path='/about' element={<About/>}></Route>
             <Route path='/detail/:id' element={<Detail/>}></Route>
             <Route path='/favorites' element={<Favorites/>}></Route>
-            <Route path='/' element={<Form setAccess = {setAccess} email = {email} password = {password}></Form>}></Route>
+            <Route path='/' element={<Form setAccess = {setAccess}></Form>}></Route>
          </Routes>
       </div>
    );
