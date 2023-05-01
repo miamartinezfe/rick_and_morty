@@ -21,13 +21,11 @@ export default function Form({ setAccess }) {
   };
 
   const login = async (event) => {
-    console.log("BUENAAAAS");
     event.preventDefault();
     const  {data}  = await axios.post("/login", {
       email: userData?.email,
       password: userData?.password,
     });
-    console.log("BUENAAAAS");
     if (data.access) {
       setAccess(true);
       navigate("/home");

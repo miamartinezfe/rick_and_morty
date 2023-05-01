@@ -18,11 +18,9 @@ function App() {
    useEffect(() => {
       !access && navigate('/');
    }, [access,navigate]);
-
    function onSearch(id) {
       axios.get(`/character/${id}`)
       .then(({ data }) => {
-         console.log(data);
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
@@ -31,7 +29,6 @@ function App() {
       });
    }
    function onClose(id) {
-      console.log(id);
       setCharacters(characters.filter((character) => {
          return character.id !== parseInt(id, 10);
       }

@@ -2,7 +2,6 @@ import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from "./types";
 import axios from "axios";
 
 export const addFav = (character) => {
-   console.log(character);
     const endpoint = '/fav';
     return (dispatch) => {
        axios.post(endpoint, character).then(({ data }) => {
@@ -13,6 +12,18 @@ export const addFav = (character) => {
        });
     };
  };
+
+ export const getFavs = () => {
+   const endpoint = '/character';
+   return (dispatch) => {
+      axios.get(endpoint).then(({ data }) => {
+         return dispatch({
+            type: ADD_FAV,
+            payload: data,
+         });
+      });
+   };
+};
 
  export const removeFav = (id) => {
     const endpoint = `/fav/${id}`;
