@@ -4,9 +4,12 @@ import { useState } from "react";
 import validation from "../validation";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { getFavs } from "../redux/actions/actions";
+import { connect, useDispatch } from "react-redux";
 
-export default function Form({ setAccess }) {
+export function Form({ setAccess, getFavs }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [userData, setUserData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
 
@@ -22,11 +25,12 @@ export default function Form({ setAccess }) {
 
   const login = async (event) => {
     event.preventDefault();
-    const  {data}  = await axios.post("/login", {
+    const { data } = await axios.post("/login", {
       email: userData?.email,
       password: userData?.password,
     });
     if (data.access) {
+      getFavs();
       setAccess(true);
       navigate("/home");
     } else alert("Password o contrasena incorrectos");
@@ -60,3 +64,12 @@ export default function Form({ setAccess }) {
     </form>
   );
 }
+export function mapDispatchToProps(dispatch) {
+  return {
+    getFavs: () => {
+      dispatch(getFavs());
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Form);

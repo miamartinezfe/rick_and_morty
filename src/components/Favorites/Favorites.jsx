@@ -3,15 +3,10 @@ import { connect } from "react-redux";
 import Card from "../Card";
 import { filterCards, getFavs, orderCards } from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
-import axios from "axios";
-import Cards from "../Cards";
 
 const Favorites = (props) => {
   const [aux, setAux] = useState(false);
   const dispatch = useDispatch();
-  useEffect(() => {
-    props.getFavs();
-  }, [props.myFavorites]);
   const handleGender = (event) => {
     setAux(!aux);
     const gender = event.target.value;
@@ -70,12 +65,5 @@ export function mapStateToProps({ myFavorites }) {
   };
 }
 
-export function mapDispatchToProps(dispatch) {
-  return {
-    getFavs: () => {
-      dispatch(getFavs());
-    },
-  };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
+export default connect(mapStateToProps, null)(Favorites);
