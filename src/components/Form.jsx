@@ -22,7 +22,7 @@ export default function Form({ setAccess }) {
 
   const login = async (event) => {
     event.preventDefault();
-    const  {data}  = await axios.post("http://localhost:3001/rickandmorty/login", {
+    const  {data}  = await axios.post("/character/login", {
       email: userData?.email,
       password: userData?.password,
     });

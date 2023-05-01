@@ -33,7 +33,6 @@ function Card({
       console.log(myFavorites);
 
       const search = myFavorites.find((fav) => {
-        console.log("ENTRA???????");
         return fav.id == id;
       });
       if (!search) {

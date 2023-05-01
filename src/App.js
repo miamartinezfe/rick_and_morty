@@ -18,7 +18,7 @@ function App() {
    }, [access]);
 
    function onSearch(id) {
-      axios.get(`http://localhost:3001/rickandmorty/character/${id}`)
+      axios.get(`/character/${id}`)
       .then(({ data }) => {
          console.log(data);
          if (data.name) {
