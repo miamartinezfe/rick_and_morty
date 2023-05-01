@@ -14,6 +14,7 @@ function Card({
   removeFav,
   myFavorites,
   gender,
+  origin
 }) {
   const [isFav, setIsFav] = useState(false);
 
@@ -37,7 +38,7 @@ function Card({
       });
       if (!search) {
         setIsFav(true);
-        addFav({ name, status, species, image, id, onClose, gender });
+        addFav({ name, status, species, image, id, onClose, gender, origin});
       }
     }
   };
