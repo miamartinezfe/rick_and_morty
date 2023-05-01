@@ -14,31 +14,26 @@ function Card({
   removeFav,
   myFavorites,
   gender,
-  origin
+  origin,
 }) {
   const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
-    myFavorites.forEach((fav) => {
-      if (fav.id === id) {
-        setIsFav(true);
-      }
-    });
-  }, [myFavorites]);
+    const isFavorite = myFavorites.some((fav) => fav.id === id);
+    setIsFav(isFavorite);
+  }, [myFavorites, id]);
 
   const handleFavorite = () => {
     if (isFav) {
       setIsFav(false);
       removeFav(id);
     } else if (!isFav) {
-      console.log(myFavorites);
-
       const search = myFavorites.find((fav) => {
-        return fav.id == id;
+        return fav.id === id;
       });
       if (!search) {
         setIsFav(true);
-        addFav({ name, status, species, image, id, onClose, gender, origin});
+        addFav({ name, status, species, image, id, onClose, gender, origin });
       }
     }
   };
