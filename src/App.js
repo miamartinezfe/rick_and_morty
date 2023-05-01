@@ -17,7 +17,7 @@ function App() {
    const navigate = useNavigate();
    useEffect(() => {
       !access && navigate('/');
-   }, [access]);
+   }, [access,navigate]);
 
    function onSearch(id) {
       axios.get(`/character/${id}`)
