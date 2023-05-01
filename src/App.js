@@ -9,7 +9,7 @@ import Detail from './components/Detail';
 import Form from './components/Form';
 import Favorites from './components/Favorites/Favorites';
 //axios.defaults.baseURL = 'http://localhost:3001/rickandmorty/'
-
+axios.defaults.baseURL = 'https://server-back-production.up.railway.app/rickandmorty/';
 
 function App() {   
    const [characters, setCharacters] = useState([]);
