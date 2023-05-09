@@ -53,7 +53,7 @@ function Card({
       <h2>{status}</h2>
       <h2>{species}</h2>
       <h2>{gender}</h2>
-      {<img src={image} alt="" />}
+      <img src={image} alt="" />
     </div>
   );
 }
